@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'docker build -t my-ml-model .'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'docker run my-ml-model python my_script.py'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'docker push my-ml-model'
+            }
+        }
+    }
+}
